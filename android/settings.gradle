@@ -1,0 +1,3 @@
+rootProject.name = 'lost_runner_client'
+
+include ':app'
