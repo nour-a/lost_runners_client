@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import React, {PropTypes} from 'react';
+import {Text, StyleSheet} from 'react-native';
 
 const propTypes = {
   selected: PropTypes.bool,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 });
 const TabIcon = (props) => (
   <Text
-    style={{ color: props.selected ? '#322C67' : '#ccc' }}
+    style={props.selected ? styles.active : styles.unActive}
   >
     {props.title}
   </Text>

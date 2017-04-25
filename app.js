@@ -12,7 +12,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/index';
 
-const store = createStore(reducer, applyMiddleware(thunk, createLogger));
+const store = createStore(reducer, applyMiddleware(thunk, createLogger()));
 
 export default class app extends Component {
    
@@ -24,7 +24,7 @@ export default class app extends Component {
                 <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
                     <Scene key="tab1" title="1" icon={TabIcon} 
                     onPress={() => {Actions.destination({type: ActionConst.REFRESH}); }}>
-                        <Scene key="destination" title="Select Destination" component={Destination} />
+                        <Scene key="destination" title="Select Route" component={Destination} />
                     </Scene>
                 </Scene>
             </Router>

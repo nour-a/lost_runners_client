@@ -1,48 +1,72 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { StyleSheet, View} from 'react-native';
 
 import {connect} from 'react-redux';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
+
+import * as actions from '../actions/actions.location';
 
 class Destination extends Component {
+    constructor () {
+        super();
+        this.state = {loading: true};
+    }
+    componentDidMount () {
+        this.props.fetchUserLocation();
+    }
     render() {
-    const { region } = this.props;
-    console.log(region);
+        // const {region} = this.props;
 
-    return (
-      <View style ={styles.container}>
-        <MapView
-          style={styles.map}
-          region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
-          }}
-        >
-        </MapView>
-      </View>
-    );
-  }
+        return (
+            <View style ={styles.container}>
+                {Object.keys(this.props.startLocation).length > 0 && <MapView
+                style={styles.map}
+                showsUserLocation={true}
+                showsMyLocationButton={true}
+                region={Object.assign({}, this.props.startLocation, {longitudeDelta: 0.1, latitudeDelta: 0.1})}
+                >
+                <Marker 
+                coordinate={this.props.startLocation}
+                draggable={true}
+                
+                onDragEnd={(e) => console.log('drag end', e)}
+                
+                />
+                </MapView>}
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
+    container: {
+        ...StyleSheet.absoluteFillObject,
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+    },
+    map: {
+        ...StyleSheet.absoluteFillObject,
+    },
 });
 
+Destination.propTypes = {
+    fetchUserLocation: PropTypes.func,
+    startLocation: PropTypes.object
+};
 
 
-
-function mapStateToProps(state){
-    return {state}
+function mapStateToProps(state) {
+    console.log(state);
+    return {
+        startLocation: state.startLocation
+    };
 }
-export default connect(mapStateToProps)(Destination);
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchUserLocation: () => {
+            dispatch(actions.fetchUserLocation());
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Destination);
