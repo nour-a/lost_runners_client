@@ -21,10 +21,10 @@ export default class app extends Component {
     return (
         <Provider store={store}>
             <Router>
-                <Scene key="home" tabs={true} hideNavBar tabBarStyle={styles.tabBarStyle}>
+                <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
                     <Scene key="tab1" title="1" icon={TabIcon} 
-                    onPress={()=> {Actions.destination({type: ActionConst.REFRESH})}}>
-                        <Scene key="destination" component={Destination} hideNavBar/>
+                    onPress={() => {Actions.destination({type: ActionConst.REFRESH}); }}>
+                        <Scene key="destination" title="Select Destination" component={Destination} />
                     </Scene>
                 </Scene>
             </Router>
