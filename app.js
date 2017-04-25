@@ -6,13 +6,13 @@ import { Actions, Router,Scene, ActionConst } from 'react-native-router-flux';
 import TabIcon from './components/TabIcon.js';
 import Destination from './components/Destination.js';
 
-
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-
 import reducer from './reducers/index';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk, createLogger));
 
 export default class app extends Component {
    
