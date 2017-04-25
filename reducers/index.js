@@ -17,4 +17,4 @@ export default combineReducers ({
     isRunning,
     locations,
     user
-})
+});

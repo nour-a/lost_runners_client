@@ -1,3 +1,6 @@
-export default function(prevState={}, action) {
-    return prevState;
+export default function (prevState = {}, action) {
+    switch (action.type) {
+        default:
+            return prevState;
+    }
 }

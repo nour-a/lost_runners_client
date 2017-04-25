@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native';
+import {AppRegistry} from 'react-native';
 
 import lost_runner_client from './app';
 
