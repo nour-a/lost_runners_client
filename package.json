@@ -13,6 +13,7 @@
     "react": "16.0.0-alpha.6",
     "react-addons-pure-render-mixin": "^15.5.2",
     "react-native": "0.43.4",
+    "react-native-google-places-autocomplete": "^1.2.12",
     "react-native-maps": "^0.14.0",
     "react-native-router-flux": "^3.38.1",
     "react-redux": "^5.0.4",
@@ -23,14 +24,14 @@
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
-    "react-test-renderer": "16.0.0-alpha.6",
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-react": "^6.10.3",
     "husky": "^0.13.3",
     "jest": "^19.0.2",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
     "preset": "react-native"
