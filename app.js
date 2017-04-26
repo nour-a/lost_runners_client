@@ -3,8 +3,10 @@ import { StyleSheet } from 'react-native';
 
 import { Actions, Router,Scene, ActionConst } from 'react-native-router-flux';
 
-import TabIcon from './components/TabIcon.js';
-import Destination from './components/Destination.js';
+import TabIcon from './components/TabIcon';
+import Destination from './components/Destination';
+import Duration from './components/Duration';
+
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -22,9 +24,13 @@ export default class app extends Component {
         <Provider store={store}>
             <Router>
                 <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
-                    <Scene key="tab1" title="1" icon={TabIcon} 
-                    onPress={() => {Actions.destination({type: ActionConst.REFRESH}); }}>
-                        <Scene key="destination" title="Select Route" component={Destination} />
+                    <Scene key="destination" title="1" icon={TabIcon} 
+                    onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
+                        <Scene key="destinationTab" title="Select Route" component={Destination} />
+                    </Scene>
+                    <Scene key="duration" title="2" icon={TabIcon} initial
+                    onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
+                        <Scene key="durationTab" title="Set up duration" component={Duration} />
                     </Scene>
                 </Scene>
             </Router>
