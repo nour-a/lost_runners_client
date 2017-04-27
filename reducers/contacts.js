@@ -3,7 +3,7 @@ export default function (prevState = [], action) {
     switch (action.type) {
         case types.UPDATE_CONTACTS:
             if (prevState.includes(action.payload)) {
-            return prevState.filter((elem, i)=> {
+            return prevState.filter((elem) => {
                 return elem !== action.payload;
             });
             } else {

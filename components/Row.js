@@ -49,7 +49,7 @@ export default class Row extends Component {
                     renderItem={(item) =>                         
                         <View style={styles.col}>
                             <Text style={styles.text}>{item.item.number}</Text>                        
-                            <Button onPress={()=> this.handlePress(item.item.number)} style={styles.text}>select</Button>
+                            <Button onPress={() => this.handlePress(item.item.number)} style={styles.text}>select</Button>
                         </View>                            
                     }/>
                 </View>
@@ -58,9 +58,10 @@ export default class Row extends Component {
     }
 }
 
-// Row.propTypes = {
-//     thumbnailPath: PropTypes.string,
-//     givenName: PropTypes.string,
-//     familyName: PropTypes.string,
-//     phoneNumbers: PropTypes.array
-// };
+Row.propTypes = {
+    thumbnailPath: PropTypes.string,
+    givenName: PropTypes.string,
+    familyName: PropTypes.string,
+    phoneNumbers: PropTypes.array,
+    addNumber: PropTypes.func
+};

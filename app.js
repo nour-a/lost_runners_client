@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Actions, Router,Scene, ActionConst } from 'react-native-router-flux';
+import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
 
 import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';

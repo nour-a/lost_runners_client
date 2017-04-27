@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, FlatList, Text} from 'react-native';
+import { StyleSheet, View, FlatList} from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -15,8 +15,7 @@ class SelectContacts extends Component {
             data: []
         };   
     }
-
-    componentDidMount(){
+    componentDidMount() {
         Contacts.getAll((err, contacts) => {
             if (err && err.type === 'permissionDenied') {
                 // x.x 
@@ -59,8 +58,8 @@ const styles = StyleSheet.create({
 });
 
 Contacts.propTypes = {
-    updateContacts: PropTypes.func,
-    contacts: PropTypes.array
+    contacts: PropTypes.array,
+    updateContacts: PropTypes.func
 };
 
 
