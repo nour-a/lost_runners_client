@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.airbnb.android.react.maps.MapsPackage;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -25,7 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new MapsPackage()
+          new MapsPackage(),
+          new ReactNativeContacts()
       );
     }
   };

@@ -6,6 +6,7 @@ import { Actions, Router,Scene, ActionConst } from 'react-native-router-flux';
 import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';
 import Duration from './components/Duration';
+import SelectContacts from './components/SelectContacts';
 
 
 import thunk from 'redux-thunk';
@@ -28,9 +29,13 @@ export default class app extends Component {
                     onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="destinationTab" title="Select Route" component={Destination} />
                     </Scene>
-                    <Scene key="duration" title="2" icon={TabIcon} initial
+                    <Scene key="duration" title="2" icon={TabIcon} 
                     onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="durationTab" title="Set up duration" component={Duration} />
+                    </Scene>
+                    <Scene key="contacts" title="3" icon={TabIcon} initial
+                    onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
+                        <Scene key="contactsTab" title="Select contacts" component={SelectContacts} />
                     </Scene>
                 </Scene>
             </Router>
