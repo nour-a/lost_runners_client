@@ -17,10 +17,7 @@ class SelectContacts extends Component {
     }
     componentDidMount() {
         Contacts.getAll((err, contacts) => {
-            if (err && err.type === 'permissionDenied') {
-                // x.x 
-            } else {
-                console.log(contacts);
+            if (!err && err.type !== 'permissionDenied') {
                 this.setState({
                     data: contacts,
                 });
