@@ -3,7 +3,8 @@ import {
     View,
     StyleSheet,
     FlatList,
-    ScrollView
+    ScrollView,
+    Text
 } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 
@@ -28,7 +29,8 @@ export default class ListSearch extends Component {
     }
     
     onLocationInput(text) {
-        this.setState({text});
+        const options = text === '' ? [] : this.state.options;
+        this.setState({text, options});
         fetch(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${text}&key=AIzaSyDGIXl-W13BksPlK6lXUIM1UvVb__3VPec`)
             .then(res => {
                 return res.json();
@@ -44,16 +46,22 @@ export default class ListSearch extends Component {
     render () {
        return (
             <View style={styles.container}>
-                <SearchBar
-                    lightTheme
-                    round
-                    noIcon
-                    containerStyle={styles.searchContainer}
-                    inputStyle={styles.inputStyle}
-                    onChangeText={this.onLocationInput}
-                    onFocus={this.handleInputFocus}
-                    value={this.state.text} 
-                />
+                <View style={styles.searchBarContainer}>
+                    <Text style={styles.searchLabel}>{this.props.label}</Text>
+                    <SearchBar
+                        textInputRef='destination'
+                        noIcon
+                        clearIcon={{color: 'red'}}
+                        lightTheme
+                        round
+                        containerStyle={styles.searchContainer}
+                        inputStyle={styles.inputStyle}
+                        onChangeText={this.onLocationInput}
+                        onFocus={this.handleInputFocus}
+                        value={this.state.text} 
+                    ></SearchBar>
+                </View>
+                
                 <ScrollView>
                     <FlatList
                         keyExtractor={item => item.description}
@@ -73,9 +81,10 @@ export default class ListSearch extends Component {
 }
 
 ListSearch.propTypes = {
-    onChoiceSelect: PropTypes.func,
+    onChoiceSelect: PropTypes.func.isRequired,
     initialInputValue: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    label: PropTypes.string
 };
 
 const styles = StyleSheet.create({
@@ -83,19 +92,35 @@ const styles = StyleSheet.create({
         flexGrow: 0, flexShrink: 0, flexBasis: 'auto',
         maxHeight: 250
     },
+    searchBarContainer: {
+        paddingLeft: 10, 
+        flexGrow: 0, 
+        backgroundColor: 'rgb(37, 30, 72)', 
+        flexDirection: 'row', 
+        alignItems: 'center'
+    },
     list: {
         flexGrow: 0, 
         flexShrink: 0, 
         flexBasis: 'auto',
         backgroundColor: 'rgba(255, 255, 255, 0.8)'
     },
+    searchLabel: {
+        color: 'white', 
+        flexGrow: 1, 
+        backgroundColor: 'transparent'
+    },
     searchContainer: {
-        backgroundColor: 'rgb(37, 30, 72)'
+        backgroundColor: 'transparent',
+        flexGrow: 50,
+        borderTopWidth: 0,
+        borderBottomWidth: 0,
+        borderColor: 'transparent'
     },
     searchInput: {
         borderWidth: 1,
         borderColor: 'rgb(128, 127, 227)',
-        backgroundColor: 'tranparent', 
+        backgroundColor: 'transparent', 
         color: 'rgb(255, 255, 255)'
     }
 });

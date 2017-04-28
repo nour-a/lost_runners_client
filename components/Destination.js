@@ -15,11 +15,12 @@ class Destination extends Component {
     
     render() {
         const {locationReady, destinationReady} = this.props;
-        const destination = destinationReady ? `${this.props.destination.longitude}, ${this.props.destination.latitude}` : 'Start from...';
+        const destination = destinationReady ? `${this.props.destination.longitude}, ${this.props.destination.latitude}` : '...';
         return (
             <View style={styles.container}>
                 <ListSearch
-                    placeholder={'Start from...'}
+                    label='To:'
+                    placeholder='...'
                     initialInputValue={destination}
                     onChoiceSelect={this.props.fetchDestinationCoords}
                 />
