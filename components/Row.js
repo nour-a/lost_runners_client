@@ -8,17 +8,29 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: 'stretch',
   },
   text: {
     marginLeft: 12,
-    fontSize: 16,
-    alignContent: 'stretch'
+    fontSize: 16
   },
   photo: {
     height: 40,
     width: 40,
     borderRadius: 20,
+  }, 
+  row:{
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  col:{
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  btn: {
+      
   }
 });
 
@@ -31,25 +43,22 @@ export default class Row extends Component {
     }
     render() { 
         return (
-            <View style={styles.container}>
-                <View>
+            <View style={styles.container}>               
                     { (this.props.thumbnailPath.length !== 0) ? 
                         (<Image source={{ uri: this.props.thumbnailPath}} style={styles.photo} />) 
                         : (<Image source={require('./img/default-user.png')} style={styles.photo} />)
                     }
-                </View>
-                <View>
+                <View style={styles.col}>    
                     <Text style={styles.text}>       
                         {`${this.props.givenName || ''} ${this.props.familyName || ''}`}
                     </Text>  
-
-                    <FlatList 
+                    <FlatList  
                     data={this.props.phoneNumbers} 
                     keyExtractor={(item, i) => i} 
                     renderItem={(item) =>                         
-                        <View style={styles.col}>
+                        <View style={styles.row}>
                             <Text style={styles.text}>{item.item.number}</Text>                        
-                            <Button onPress={() => this.handlePress(item.item.number)} style={styles.text}>select</Button>
+                            <Button onPress={() => this.handlePress(item.item.number)} style={styles.btn}>select</Button>
                         </View>                            
                     }/>
                 </View>

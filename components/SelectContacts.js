@@ -16,8 +16,12 @@ class SelectContacts extends Component {
         };   
     }
     componentDidMount() {
-        Contacts.getAll((err, contacts) => {
-            if (!err && err.type !== 'permissionDenied') {
+        Contacts.getAll((err, contacts) => {       
+            if (err && err.type === 'permissionDenied') {
+                this.setState({
+                    data: contacts,
+                });
+            } else {
                 this.setState({
                     data: contacts,
                 });
@@ -28,6 +32,7 @@ class SelectContacts extends Component {
         return (
             <View style={styles.container}>
                 <FlatList 
+                style={styles.flatList}
                 data={this.state.data} 
                 keyExtractor={(item, i) => i} 
                 renderItem={(item) => 
@@ -48,8 +53,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    listView: {
+    flatList: {
         flex:1,
+        alignSelf: 'stretch',
         marginTop: 20
     },
 });
