@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View} from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import {connect} from 'react-redux';
 import MapView, { Marker } from 'react-native-maps';
 import ListSearch from './ListSearch';
@@ -33,17 +35,20 @@ class Destination extends Component {
                         region={Object.assign({}, this.props.startLocation, {longitudeDelta: 0.1, latitudeDelta: 0.1})}
                     >
                         <Marker
-                            pinColor={'blue'}
                             coordinate={this.props.startLocation}
                             draggable={true}
                             onDragEnd={(e) => console.log('drag end', e)}
-                        />
+                        >
+                            <Icon name="person-pin" size={40} color="rgb(35, 28, 99)" />
+                        </Marker>
                         {destinationReady &&
                         <Marker 
                             coordinate={this.props.destination}
                             draggable={true}
                             onDragEnd={(e) => this.props.setUserDestination(e.nativeEvent.coordinate) }
-                        />
+                        >
+                            <Icon name="flag" size={40} color="rgb(250, 0, 0)" />
+                        </Marker>
                         }
                     </MapView>
                 </View>
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        marginTop: 60
+        marginTop: 54
     },
     mapContainer: {
          ...StyleSheet.absoluteFillObject,
