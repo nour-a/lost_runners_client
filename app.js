@@ -6,7 +6,7 @@ import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-route
 import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';
 import Duration from './components/Duration';
-import SelectContacts from './components/SelectContacts';
+import Contacts from './components/Contacts';
 
 
 import thunk from 'redux-thunk';
@@ -35,7 +35,7 @@ export default class app extends Component {
                     </Scene>
                     <Scene key="contacts" title="3" icon={TabIcon} initial
                     onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
-                        <Scene key="contactsTab" title="Select contacts" component={SelectContacts} />
+                        <Scene key="contactsTab" title="Select contacts" component={Contacts} />
                     </Scene>
                 </Scene>
             </Router>

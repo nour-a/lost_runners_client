@@ -13,7 +13,7 @@ export default class Row extends Component {
         this.props.addNumber(num);
         this.setState({
             checked: !this.state.checked
-        })
+        });
     }
     render() { 
         return (                                  

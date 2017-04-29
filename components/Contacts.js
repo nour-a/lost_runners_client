@@ -5,13 +5,13 @@ import {connect} from 'react-redux';
 
 import {updateContacts} from '../actions/actions.contacts';
 
-import * as Contacts from 'react-native-contacts';
+import * as PhoneContacts from 'react-native-contacts';
 import Row from './Row';
 
 import { ListItem } from 'react-native-elements';
 
 
-class SelectContacts extends Component {
+class Contacts extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,7 +19,7 @@ class SelectContacts extends Component {
         };  
     }
     componentDidMount() {
-        Contacts.getAll((err, contacts) => {       
+        PhoneContacts.getAll((err, contacts) => {       
             if (err && err.type === 'permissionDenied') {
                 this.setState({
                     data: contacts,
@@ -93,4 +93,4 @@ function mapDispatchToProps(dispatch) {
         }
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SelectContacts);
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
