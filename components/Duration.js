@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import Button from 'react-native-button';
+import {Button} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
 import {connect} from 'react-redux';

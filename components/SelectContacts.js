@@ -8,12 +8,15 @@ import {updateContacts} from '../actions/actions.contacts';
 import * as Contacts from 'react-native-contacts';
 import Row from './Row';
 
+import { ListItem } from 'react-native-elements';
+
+
 class SelectContacts extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: []
-        };   
+        };  
     }
     componentDidMount() {
         Contacts.getAll((err, contacts) => {       
@@ -36,9 +39,21 @@ class SelectContacts extends Component {
                 data={this.state.data} 
                 keyExtractor={(item, i) => i} 
                 renderItem={(item) => 
-                    <Row addNumber={this.props.updateContacts} {...item.item} />
+                    <ListItem
+                    roundAvatar={true}
+                    hideChevron={true}
+                    avatar={ (item.item.thumbnailPath > 0) ? {uri:item.item.thumbnailPath} : require('./img/default-user.png')}
+                    title={item.item.givenName}
+                    subtitle={
+                        <FlatList  
+                        data={item.item.phoneNumbers} 
+                        keyExtractor={(num, i) => i} 
+                        renderItem={(num) => 
+                            <Row addNumber={this.props.updateContacts} {...num.item} />
+                        }/>
+                    }/>  
                 }/>
-            </View>
+        </View>
         );
     }
 }
