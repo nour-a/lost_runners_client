@@ -16,12 +16,11 @@ export default class Row extends Component {
         });
     }
     render() { 
-        console.log(this.props)
         return (                                  
             <CheckBox
             onPress={() => this.handlePress(this.props.number)}
             iconRight={true}
-            title={this.props.label + ' ' +this.props.number}
+            title={this.props.label + ' ' + this.props.number}
             iconType='material'
             checkedIcon='check'
             uncheckedIcon='clear'
@@ -43,6 +42,7 @@ Row.propTypes = {
     thumbnailPath: PropTypes.string,
     givenName: PropTypes.string,
     familyName: PropTypes.string,
+    label:PropTypes.string,
     phoneNumbers: PropTypes.array,
     addNumber: PropTypes.func,
     handleCheck:PropTypes.func,
