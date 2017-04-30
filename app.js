@@ -27,18 +27,18 @@ export default class app extends Component {
         <Provider store={store}>
             <Router>
                 <Scene key="root" hideNavBar={true}>
-                    <Scene initial key="wellcome"  hideNavBar={true} component={Wellcome} />
-                    <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle}>
+                    <Scene initial key="wellcome"  hideNavBar={true} component={Wellcome} direction="horitzontal"/>
+                    <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle} direction="horitzontal">
                         <Scene initial key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
-                        onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
+                        onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="destinationTab" title="Select Route" component={Destination} />
                         </Scene>
                         <Scene key="duration" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
-                        onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
+                        onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="durationTab" title="Set up duration" component={Duration} />
                         </Scene>
                         <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} 
-                        onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
+                        onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="contactsTab" title="Select contacts" component={Contacts} />
                         </Scene>
                     </Scene>
