@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import {theme} from './theme';
+
 
 import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
 
@@ -24,16 +25,16 @@ export default class app extends Component {
     return (
         <Provider store={store}>
             <Router>
-                <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
-                    <Scene key="destination" title="1" icon={TabIcon} 
+                <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle}>
+                    <Scene key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
                     onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="destinationTab" title="Select Route" component={Destination} />
                     </Scene>
-                    <Scene key="duration" title="2" icon={TabIcon} 
+                    <Scene key="duration" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} initial
                     onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="durationTab" title="Set up duration" component={Duration} />
                     </Scene>
-                    <Scene key="contacts" title="3" icon={TabIcon} initial
+                    <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
                     onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="contactsTab" title="Select contacts" component={Contacts} />
                     </Scene>
@@ -43,13 +44,4 @@ export default class app extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-    tabBarStyle: {
-        backgroundColor: '#eee',
-    },
-    tabBarSelectedItemStyle: {
-        backgroundColor: '#ddd',
-    },
-});
 
