@@ -30,11 +30,11 @@ export default class app extends Component {
                     onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="destinationTab" title="Select Route" component={Destination} />
                     </Scene>
-                    <Scene key="duration" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} initial
+                    <Scene key="duration" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
                     onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="durationTab" title="Set up duration" component={Duration} />
                     </Scene>
-                    <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
+                    <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} initial
                     onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
                         <Scene key="contactsTab" title="Select contacts" component={Contacts} />
                     </Scene>

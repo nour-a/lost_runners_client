@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, FlatList} from 'react-native';
+import {theme} from '../theme';
 
 import {connect} from 'react-redux';
 
@@ -33,7 +34,7 @@ class Contacts extends Component {
     }
     render() {
         return (
-            <View style={styles.container}>
+            <View style={theme.container}>
                 <FlatList 
                 style={styles.flatList}
                 data={this.state.data} 
@@ -59,15 +60,6 @@ class Contacts extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        alignSelf: 'stretch',
-        paddingBottom: 80,
-        paddingTop: 20,
-        paddingHorizontal: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     flatList: {
         flex:1,
         alignSelf: 'stretch',
