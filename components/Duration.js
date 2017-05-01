@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {View, Text} from 'react-native';
 import {theme} from '../theme';
-
 import {Button} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
