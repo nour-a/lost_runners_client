@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import {theme} from './theme';
+import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
 
 import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
 
+import Wellcome from './components/Wellcome';
 import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';
 import Duration from './components/Duration';
@@ -24,18 +26,21 @@ export default class app extends Component {
     return (
         <Provider store={store}>
             <Router>
-                <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={styles.tabBarStyle}>
-                    <Scene key="destination" title="1" icon={TabIcon} 
-                    onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }}>
-                        <Scene key="destinationTab" title="Select Route" component={Destination} />
-                    </Scene>
-                    <Scene key="duration" title="2" icon={TabIcon} 
-                    onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }}>
-                        <Scene key="durationTab" title="Set up duration" component={Duration} />
-                    </Scene>
-                    <Scene key="contacts" title="3" icon={TabIcon} initial
-                    onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }}>
-                        <Scene key="contactsTab" title="Select contacts" component={Contacts} />
+                <Scene key="root" hideNavBar={true}>
+                    <Scene initial key="wellcome"  hideNavBar={true} component={Wellcome} direction="horitzontal"/>
+                    <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle} direction="horitzontal">
+                        <Scene initial key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
+                        onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
+                            <Scene key="destinationTab" title="Select Route" component={Destination} />
+                        </Scene>
+                        <Scene key="duration" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
+                        onPress={() => {Actions.durationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
+                            <Scene key="durationTab" title="Set up duration" component={Duration} />
+                        </Scene>
+                        <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} 
+                        onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
+                            <Scene key="contactsTab" title="Select contacts" component={Contacts} />
+                        </Scene>
                     </Scene>
                 </Scene>
             </Router>
@@ -43,13 +48,4 @@ export default class app extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-    tabBarStyle: {
-        backgroundColor: '#eee',
-    },
-    tabBarSelectedItemStyle: {
-        backgroundColor: '#ddd',
-    },
-});
 

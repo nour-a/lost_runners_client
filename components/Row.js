@@ -20,14 +20,19 @@ export default class Row extends Component {
             <CheckBox
             onPress={() => this.handlePress(this.props.number)}
             iconRight={true}
-            title={this.props.number}
+            title={this.props.label + ' ' + this.props.number}
             iconType='material'
             checkedIcon='check'
             uncheckedIcon='clear'
             uncheckedColor='#fff'
             checkedColor='blue'
             checked={this.state.checked}
-            containerStyle={{backgroundColor:'#fff', borderColor:'#fff'}}
+            containerStyle={{
+                backgroundColor:'#fff', 
+                borderColor:'#fff',
+                paddingHorizontal: 0,
+                paddingVertical: 0,
+                }}
             />                                                
         );
     }
@@ -37,6 +42,7 @@ Row.propTypes = {
     thumbnailPath: PropTypes.string,
     givenName: PropTypes.string,
     familyName: PropTypes.string,
+    label:PropTypes.string,
     phoneNumbers: PropTypes.array,
     addNumber: PropTypes.func,
     handleCheck:PropTypes.func,

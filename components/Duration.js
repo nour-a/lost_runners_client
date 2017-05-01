@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
+import {theme} from '../theme';
 import {Button} from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 
@@ -14,46 +15,47 @@ class Duration extends Component {
     }
     render() {
         return (
-           <View style={styles.container}>
-               <Text>{this.formatTime(this.props.duration)}</Text>
-               <Button
-                    style={{fontSize: 20, color: 'blue'}}
-                    onPress={() => this.props.updateDuration(60)}>
-                    +
-                </Button>
+           <View style={theme.container}>
+               <Text style={{fontSize: 100}}>{this.formatTime(this.props.duration)}</Text>
+                <View style={{flexDirection:'row'}}>
+                    <Button
+                    backgroundColor='rgb(250,0,0)'
+                    buttonStyle={theme.btnCirlce}
+                    onPress={() => this.props.updateDuration(60)}
+                    raised={true}
+                    title='+'/>
+                    <Button
+                    backgroundColor='rgb(250,0,0)'
+                    buttonStyle={[theme.btnCirlce, {marginRight:20}]}
+                    onPress={() => this.props.updateDuration(-60)}
+                    raised={true}
+                    title='-'/>
+                    <Button
+                    backgroundColor='rgb(250,0,0)'
+                    buttonStyle={[theme.btnCirlce, {marginLeft:25}]}
+                    onPress={() => this.props.updateDuration(1)}
+                    raised={true}
+                    title='+'/>
+                    <Button
+                    backgroundColor='rgb(250,0,0)'
+                    buttonStyle={theme.btnCirlce}
+                    onPress={() => this.props.updateDuration(-1)}
+                    raised={true}
+                    title='-'/>
+                </View> 
                 <Button
-                    style={{fontSize: 20, color: 'blue'}}
-                    onPress={() => this.props.updateDuration(-60)}>
-                    -
-                </Button>
-                
-                <Button
-                    style={{fontSize: 20, color: 'red'}}
-                    onPress={() => this.props.updateDuration(1)}>
-                    +
-                </Button>
-                <Button
-                    style={{fontSize: 20, color: 'red'}}
-                    onPress={() => this.props.updateDuration(-1)}>
-                    -
-                </Button>
-                <Button
-                    style={{fontSize: 20, color: 'red'}}
-                    onPress={() => Actions.destination()}>
-                    Next
-                </Button>
+                    iconRight={true}
+                    backgroundColor='rgb(250,0,0)'
+                    borderRadius={50}
+                    onPress={() => Actions.destination()}
+                    raised={true}
+                    icon={{name: 'chevron-right'}}
+                    title='Next'/>
            </View> 
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-});
 
 Duration.propTypes = {
     updateDuration: PropTypes.func,
