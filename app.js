@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {theme} from './theme';
 import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
 
-import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
-
 import Wellcome from './components/Wellcome';
 import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';

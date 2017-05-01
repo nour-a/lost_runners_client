@@ -50,10 +50,10 @@ export default class ListSearch extends Component {
                     <Text style={styles.searchLabel}>{this.props.label}</Text>
                     <SearchBar
                         textInputRef='destination'
-                        noIcon
+                        noIcon={true}
                         clearIcon={{color: 'red'}}
-                        lightTheme
-                        round
+                        lightTheme={true}
+                        round={true}
                         containerStyle={styles.searchContainer}
                         inputStyle={styles.inputStyle}
                         onChangeText={this.onLocationInput}
