@@ -9,9 +9,6 @@ import {startRun} from '../actions/actions.startRun';
 
 import {Button} from 'react-native-elements';
 
-
-
-
 class Message extends Component {
     constructor(props) {
         super(props);
@@ -23,9 +20,6 @@ class Message extends Component {
                 <Text style={{fontSize: 50}}>duration: {this.props.duration}</Text>
                 <Text style={{fontSize: 50}}>latitude: {this.props.destination.latitude}</Text>
                 <Text style={{fontSize: 50}}>longitude: {this.props.destination.longitude}</Text>
-                {(this.props.contacts).map((contact)=> {
-                    <Text style={{fontSize: 10}}>{contact}</Text>
-                })}
                 
                 <TextInput
                 style={{flex:1, alignSelf: 'stretch'}}
@@ -47,10 +41,14 @@ class Message extends Component {
 }
 
 
-
 Message.propTypes = {
     message: PropTypes.string,
-    startRun: PropTypes.func
+    startRun: PropTypes.func,
+    setMessage: PropTypes.func,
+    startLocation: PropTypes.object,
+    destination: PropTypes.object,
+    duration: PropTypes.number,
+    contacts: PropTypes.array,
 };
 
 
