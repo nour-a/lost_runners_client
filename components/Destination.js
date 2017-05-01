@@ -9,6 +9,7 @@ import ListSearch from './ListSearch';
 
 import {fetchUserLocation} from '../actions/actions.location';
 import {setUserDestination, fetchDestinationCoords} from '../actions/actions.destination';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 class Destination extends Component {
     componentDidMount () {
