@@ -5,7 +5,6 @@ export const theme = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        // marginTop:100,
         alignSelf: 'stretch',
         paddingHorizontal: 0,
         paddingVertical: 40,

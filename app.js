@@ -7,7 +7,7 @@ import TabIcon from './components/TabIcon';
 import Destination from './components/Destination';
 import Duration from './components/Duration';
 import Contacts from './components/Contacts';
-
+import Message from './components/Message';
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -44,6 +44,10 @@ export default class app extends Component {
                         <Scene key="contacts" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} 
                         onPress={() => {Actions.contactsTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="contactsTab" title="Select contacts" component={Contacts} />
+                        </Scene>
+                        <Scene key="message" title="" icon={TabIcon} navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}} 
+                        onPress={() => {Actions.messageTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
+                            <Scene key="messageTab" title="Add a message" component={Message} />
                         </Scene>
                     </Scene>
                 </Scene>
