@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {theme} from './theme';
-import { Actions, Router,Scene, ActionConst, initial, Switch} from 'react-native-router-flux';
+import { Actions, Router,Scene, ActionConst, Switch} from 'react-native-router-flux';
 
 import Wellcome from './components/Wellcome';
 import TabIcon from './components/TabIcon';
