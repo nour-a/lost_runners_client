@@ -1,5 +1,5 @@
 import * as types from './types';
-import {ROOT} from '../config';
+// import {ROOT} from '../config';
 
 export function startRunRequest () { 
      return {
@@ -24,7 +24,7 @@ export function startRunError (error) {
 export function startRun (data) {
     return function (dispatch) {
         dispatch(startRunRequest());
-        fakeFetch(`/`, {
+        fakeFetch('/', {
             method: 'post',
             body: data
         }).then(response => {
@@ -34,18 +34,18 @@ export function startRun (data) {
             return responseJson.id;
         }).catch(err => {
             dispatch(startRunError(err));
-            console.log('error')
+            console.log('error');
         });
         // what you return here gets returned by the dispatch function that used   
         // this action creator
         return null; 
-    }
-};
+    };
+}
 
 function fakeFetch() {
     return new Promise(function (resolve) {
         setTimeout(function () {
-            resolve( {json: () => ( {id: 12} )} )
-        }, 500)
-    })
+            resolve({json: () => ({id: 12})});
+        }, 500);
+    });
 }

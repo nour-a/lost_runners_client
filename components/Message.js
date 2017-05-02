@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
-import {theme} from '../theme';
 
 import {connect} from 'react-redux';
 
@@ -28,13 +27,13 @@ class Message extends Component {
     constructor(props) {
         super(props);
         this.state = {message: ''};
-        this.inputHandler = this.inputHandler.bind(this)
+        this.inputHandler = this.inputHandler.bind(this);
     }
-    inputHandler(message){
+    inputHandler(message) {
         this.setState({message});
     }
     render() {
-        const {startLocation, destination} = this.props;
+        const {startLocation, destination, duration, contacts, message, user_id} = this.props;
         return (
             <View style={styles.container}>  
                 <Text style={styles.text}>Customize your message or send the default:</Text>   
@@ -54,7 +53,7 @@ class Message extends Component {
                     iconRight={true}
                     backgroundColor='rgb(250,0,0)'
                     borderRadius={50}
-                    onPress={() => this.props.startRun(startLocation, destination,duration,contacts,message,user_id)}
+                    onPress={() => this.props.startRun(startLocation, destination, duration, contacts, message, user_id)}
                     raised={true}
                     icon={{name: 'chevron-right'}}
                     title='Run baby, run!'/>
@@ -72,6 +71,7 @@ Message.propTypes = {
     destination: PropTypes.object,
     duration: PropTypes.number,
     contacts: PropTypes.array,
+    user_id: PropTypes.number
 };
 
 
