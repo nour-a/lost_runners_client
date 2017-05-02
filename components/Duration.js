@@ -47,7 +47,7 @@ class Duration extends Component {
                     iconRight={true}
                     backgroundColor='rgb(250,0,0)'
                     borderRadius={50}
-                    onPress={() => Actions.destination()}
+                    onPress={() => Actions.contacts()}
                     raised={true}
                     icon={{name: 'chevron-right'}}
                     title='Next'/>
