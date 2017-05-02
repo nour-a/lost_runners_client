@@ -4,6 +4,7 @@ import duration from './duration';
 import isRunning from './isRunning';
 import locations from './locations';
 import startLocation from './startLocation';
+import error from './error';
 
 import user from './user';
 
@@ -16,5 +17,6 @@ export default combineReducers ({
     duration,
     isRunning,
     locations,
-    user
+    user,
+    error
 });
