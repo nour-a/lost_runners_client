@@ -29,7 +29,7 @@ export default class app extends Component {
                 <Scene key="root" hideNavBar={true}>
                     <Scene initial key="wellcome"  hideNavBar={true} component={Wellcome} direction="horitzontal"/>
                     <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle} direction="horitzontal">
-                        <Scene initial key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
+                        <Scene  key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
                         onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="destinationTab" title="Select Route" component={Destination} />
                         </Scene>
@@ -46,7 +46,7 @@ export default class app extends Component {
                             <Scene key="messageTab" title="Add a message" component={Message} />
                         </Scene>
                     </Scene>
-                    <Scene key="running" hideNavBar={true} component={Running} direction="horitzontal"/>
+                    <Scene clone={true} type="replace" key="running" hideNavBar={true} component={Running} direction="horitzontal"/>
                 </Scene>
             </Router>
         </Provider>
