@@ -5,6 +5,7 @@ import message from './message';
 import isRunning from './isRunning';
 import locations from './locations';
 import startLocation from './startLocation';
+import error from './error';
 
 import user from './user';
 
@@ -18,5 +19,6 @@ export default combineReducers ({
     message,
     isRunning,
     locations,
-    user
+    user,
+    error
 });

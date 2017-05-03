@@ -3489,6 +3489,20 @@ react-dom@^15.4.2:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
+react-native-auth0@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-auth0/-/react-native-auth0-0.0.1.tgz#6a712cc0f00740337396205bc3da453f52d25026"
+
+react-native-contacts@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-0.8.1.tgz#ff1e90ab7da432763d2c5a62bd22e2157caffc70"
+
+react-native-datepicker@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-native-datepicker/-/react-native-datepicker-1.4.7.tgz#2ab71379e6be06eed03745900c567b37f52024d5"
+  dependencies:
+    moment "2.x.x"
+
 react-native-elements@^0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.11.2.tgz#441b26d1a3102eb11abd0dbf24e291b3eb630e56"
@@ -3513,6 +3527,12 @@ react-native-google-places-autocomplete@^1.2.12:
   dependencies:
     lodash.debounce "^4.0.8"
     qs "^5.2.0"
+
+react-native-lock@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-lock/-/react-native-lock-0.6.0.tgz#2fc40caf74e60b7516b2faeee975271a71696c49"
+  dependencies:
+    react-native-auth0 "^0.0.1"
 
 react-native-maps@^0.14.0:
   version "0.14.0"
@@ -3544,6 +3564,13 @@ react-native-tab-navigator@^0.3.3:
 react-native-tabs@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-tabs/-/react-native-tabs-1.0.9.tgz#75d3c35e8b5b6970869eab282372cb32e2a782cd"
+
+react-native-vector-icons@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.0.1.tgz#39c05d2e775deeb98d5afdbda5dcf67965ff674f"
+  dependencies:
+    lodash "^4.0.0"
+    yargs "^6.3.0"
 
 react-native@0.43.4:
   version "0.43.4"
