@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
+import { Actions, ActionConst } from 'react-native-router-flux';
 
 import {connect} from 'react-redux';
 
@@ -34,6 +35,10 @@ class Message extends Component {
     }
     render() {
         const {startLocation, destination, duration, contacts, message, user_id} = this.props;
+        const start = () => { 
+            this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
+            Actions.pop('root'); 
+        }
         return (
             <View style={styles.container}>  
                 <Text style={styles.text}>Customize your message or send the default:</Text>   
