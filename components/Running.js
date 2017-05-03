@@ -48,7 +48,7 @@ class Running extends Component {
     render() {
         return (
             <View style={theme.container}>  
-                <Text>Oi!, I'm running</Text>
+                <Text>Oi!, Im running</Text>
                 <Text>time left {this.formatTime(this.state.timeLeft)}</Text>
                  <Button
                     style={{flex:1}}
