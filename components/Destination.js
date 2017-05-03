@@ -7,12 +7,12 @@ import {connect} from 'react-redux';
 import MapView, { Marker } from 'react-native-maps';
 import ListSearch from './ListSearch';
 
-import {fetchUserLocation} from '../actions/actions.location';
+import {fetchStartLocation} from '../actions/actions.location';
 import {setUserDestination, fetchDestinationCoords} from '../actions/actions.destination';
 
 class Destination extends Component {
     componentDidMount () {
-        this.props.fetchUserLocation();
+        this.props.fetchStartLocation();
     }
     
     render() {
@@ -99,8 +99,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        fetchUserLocation: () => {
-            dispatch(fetchUserLocation());
+        fetchStartLocation: () => {
+            dispatch(fetchStartLocation());
         },
         setUserDestination: (pos) => {
             dispatch(setUserDestination(pos));

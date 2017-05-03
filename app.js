@@ -8,6 +8,8 @@ import Destination from './components/Destination';
 import Duration from './components/Duration';
 import Contacts from './components/Contacts';
 import Message from './components/Message';
+import Running from './components/Running';
+
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -44,6 +46,7 @@ export default class app extends Component {
                             <Scene key="messageTab" title="Add a message" component={Message} />
                         </Scene>
                     </Scene>
+                    <Scene key="running" hideNavBar={true} component={Running} direction="horitzontal"/>
                 </Scene>
             </Router>
         </Provider>
