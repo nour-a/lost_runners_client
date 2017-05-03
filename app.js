@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {theme} from './theme';
-import { Actions, Router,Scene, ActionConst, initial  } from 'react-native-router-flux';
+import { Actions, Router,Scene, ActionConst, Switch} from 'react-native-router-flux';
 
 import Wellcome from './components/Wellcome';
 import TabIcon from './components/TabIcon';
@@ -14,7 +14,7 @@ import Running from './components/Running';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import reducer from './reducers/index';
 
 const store = createStore(reducer, applyMiddleware(thunk, createLogger()));
@@ -26,10 +26,16 @@ export default class app extends Component {
     return (
         <Provider store={store}>
             <Router>
-                <Scene key="root" hideNavBar={true}>
-                    <Scene initial key="wellcome"  hideNavBar={true} component={Wellcome} direction="horitzontal"/>
+                <Scene 
+                    tabs={true}
+                    key="root" 
+                    hideNavBar={true}
+                    component={connect(state => ({loggedIn: !!state.user}))(Switch)}
+                    selector={({loggedIn}) => (loggedIn ? 'home' : 'wellcome')}
+                >
+                    <Scene key="wellcome"  hideNavBar={true} component={Wellcome} direction="horitzontal"/>
                     <Scene key="home" tabs={true} hideNavBar={true} tabBarStyle={theme.tabBarStyle} direction="horitzontal">
-                        <Scene initial key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
+                        <Scene key="destination" title="" icon={TabIcon}  navigationBarStyle={theme.bgDarkBlue} titleStyle={{color:'white'}}
                         onPress={() => {Actions.destinationTab({type: ActionConst.REFRESH}); }} barButtonIconStyle={{tintColor: 'rgb(128,127,227)'}}>
                             <Scene key="destinationTab" title="Select Route" component={Destination} />
                         </Scene>
