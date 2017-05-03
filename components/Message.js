@@ -33,12 +33,12 @@ class Message extends Component {
     inputHandler(message) {
         this.setState({message});
     }
-    render() {
+    start(){ 
         const {startLocation, destination, duration, contacts, message, user_id} = this.props;
-        const start = () => { 
-            this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
-            Actions.pop('root'); 
-        }
+        this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
+        Actions.running()
+    }
+    render() {
         return (
             <View style={styles.container}>  
                 <Text style={styles.text}>Customize your message or send the default:</Text>   
@@ -58,7 +58,7 @@ class Message extends Component {
                     iconRight={true}
                     backgroundColor='rgb(250,0,0)'
                     borderRadius={50}
-                    onPress={() => this.props.startRun(startLocation, destination, duration, contacts, message, user_id)}
+                    onPress={() => this.start() }
                     raised={true}
                     icon={{name: 'chevron-right'}}
                     title='Run baby, run!'/>
