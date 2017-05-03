@@ -76,7 +76,7 @@ Message.propTypes = {
     destination: PropTypes.object,
     duration: PropTypes.number,
     contacts: PropTypes.array,
-    user_id: PropTypes.number
+    user_id: PropTypes.string
 };
 
 
