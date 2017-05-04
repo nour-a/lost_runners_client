@@ -35,14 +35,14 @@ export function fetchCurrentLocationError (pos) {
 }
 
 
-export function fetchAndSendCurrentLocation () {
+export function fetchAndSendCurrentLocation (runId) {
     return (dispatch) => {
         navigator.geolocation.getCurrentPosition((pos) => {
             if (pos) {
                 return dispatch(sendCurrentLocation({
                     latitude: pos.coords.latitude,
                     longitude: pos.coords.longitude
-                }));
+                }, runId));
             }
             return dispatch(fetchCurrentLocationError());
         });
@@ -71,12 +71,16 @@ export function sendCurrentLocationError (error) {
 }
 
 export function sendCurrentLocation (data) {
-    console.log('oi***', data)
     return function (dispatch) {
         dispatch(sendCurrentLocationRequest());
-        fakeFetch('/', {
-            method: 'post',
-            body: data
+        fetch(`https://lost-runner.herokuapp.com/api/runs/1/coordinates`, {
+            method: 'POST',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         }).then(response => {
             return response.json();
         }).then((responseJson) => {

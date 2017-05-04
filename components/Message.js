@@ -36,7 +36,9 @@ class Message extends Component {
     start(){ 
         const {startLocation, destination, duration, contacts, message, user_id} = this.props;
         this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
-        Actions.running()
+        if (this.props.isRunning){
+            Actions.running(), 3000; 
+        }
     }
     render() {
         return (
@@ -88,6 +90,7 @@ function mapStateToProps(state) {
         contacts: state.contacts,
         message: state.message,
         user_id: state.user.id,
+        isRunning: state.isRunning
     };
 }
 function mapDispatchToProps(dispatch) {
@@ -102,8 +105,7 @@ function mapDispatchToProps(dispatch) {
                 duration: duration,
                 contacts: contacts,
                 message: message,
-                user_id: user_id
-            }));
+            }, user_id));
         }
     };
 }
