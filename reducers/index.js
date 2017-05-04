@@ -1,9 +1,11 @@
 import destination from './destination';
 import contacts from './contacts';
 import duration from './duration';
+import message from './message';
 import isRunning from './isRunning';
 import locations from './locations';
 import startLocation from './startLocation';
+import error from './error';
 
 import user from './user';
 
@@ -14,7 +16,9 @@ export default combineReducers ({
     destination,
     contacts,
     duration,
+    message,
     isRunning,
     locations,
-    user
-})
+    user,
+    error
+});

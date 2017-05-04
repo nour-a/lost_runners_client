@@ -1,10 +1,8 @@
-import * as types from '../actions/types';
+import {LOGIN_USER_ERROR} from '../actions/types';
 
 export default function (prevState = false, action) {
     switch (action.type) {
-        case types.START_RUN_REQUEST: 
-            return prevState;
-        case types.START_RUN_SUCCESS: 
+        case LOGIN_USER_ERROR:
             return action.payload;
         default:
             return prevState;
