@@ -8,10 +8,10 @@ import {connect} from 'react-redux';
 import {updateDuration} from '../actions/actions.duration';
 
 class Duration extends Component {
-    formatTime(mins) {
-        var hours = Math.floor(mins / 60) < 10 ? '0' + Math.floor(mins / 60) : Math.floor(mins / 60);
-        var minutes = mins % 60 < 10 ? '0' + mins % 60 : mins % 60;
-        return hours + ':' + minutes;
+    formatTime(d) {
+        var h = Math.floor(d / 3600) < 10 ? '0' + Math.floor(d / 3600) : Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60) < 10 ? '0' + Math.floor(d % 3600 / 60) : Math.floor(d % 3600 / 60);
+        return h + ':' + m;
     }
     render() {
         return (
@@ -20,28 +20,28 @@ class Duration extends Component {
                 <View style={{flexDirection:'row'}}>
                     <Button
                     backgroundColor='rgb(250,0,0)'
+                    buttonStyle={[theme.btnCirlce, {marginRight:20}]}
+                    onPress={() => this.props.updateDuration(-3600)}
+                    raised={true}
+                    title='-'/>
+                    <Button
+                    backgroundColor='rgb(250,0,0)'
                     buttonStyle={theme.btnCirlce}
-                    onPress={() => this.props.updateDuration(60)}
+                    onPress={() => this.props.updateDuration(3600)}
                     raised={true}
                     title='+'/>
                     <Button
                     backgroundColor='rgb(250,0,0)'
-                    buttonStyle={[theme.btnCirlce, {marginRight:20}]}
+                    buttonStyle={theme.btnCirlce}
                     onPress={() => this.props.updateDuration(-60)}
                     raised={true}
                     title='-'/>
                     <Button
                     backgroundColor='rgb(250,0,0)'
                     buttonStyle={[theme.btnCirlce, {marginLeft:25}]}
-                    onPress={() => this.props.updateDuration(1)}
+                    onPress={() => this.props.updateDuration(60)}
                     raised={true}
                     title='+'/>
-                    <Button
-                    backgroundColor='rgb(250,0,0)'
-                    buttonStyle={theme.btnCirlce}
-                    onPress={() => this.props.updateDuration(-1)}
-                    raised={true}
-                    title='-'/>
                 </View> 
                 <Button
                     iconRight={true}

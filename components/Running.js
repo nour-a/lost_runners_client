@@ -31,10 +31,11 @@ class Running extends Component {
         clearInterval(this.props.fetchAndSendCurrentLocation);
         clearInterval(this.startTimer);
     }
-    formatTime(mins) {
-        var hours = Math.floor(mins / 60) < 10 ? '0' + Math.floor(mins / 60) : Math.floor(mins / 60);
-        var minutes = mins % 60 < 10 ? '0' + mins % 60 : mins % 60;
-        return hours + ':' + minutes;
+    formatTime(d) {
+        var h = Math.floor(d / 3600) < 10 ? '0' + Math.floor(d / 3600) : Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60) < 10 ? '0' + Math.floor(d % 3600 / 60) : Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60) < 10 ? '0' + Math.floor(d % 3600 % 60) : Math.floor(d % 3600 % 60);
+        return h + ':' + m + ':' + s;
     }
     postUserLocation() { 
         setInterval(this.props.fetchAndSendCurrentLocation, 30000); 
@@ -48,13 +49,13 @@ class Running extends Component {
             this.setState({
                 timeLeft: count
             })
-        }, 60000); 
+        }, 1000); 
     }
     render() {
         return (
             <View style={theme.container}>  
                 <Text>Oi!, Im running</Text>
-                <Text style={{fontSize: 100}}>time left {this.formatTime(this.state.timeLeft)}</Text>
+                <Text style={{fontSize: 100}}>{this.state.timeLeft}</Text>
                  <Button
                     style={{flex:1}}
                     iconRight={true}
