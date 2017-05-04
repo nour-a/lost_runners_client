@@ -17,6 +17,8 @@ class Running extends Component {
         }
     }
     componentDidMount(){
+        console.log(this.props.duration, this.props.isRunning);
+        
         if (this.props.isRunning){
             this.startTimer(this.props.duration);
             this.postUserLocation();
@@ -24,6 +26,10 @@ class Running extends Component {
             clearInterval(this.props.fetchAndSendCurrentLocation);
             clearInterval(this.startTimer);
         }    
+    }
+    stopRun() {
+        clearInterval(this.props.fetchAndSendCurrentLocation);
+        clearInterval(this.startTimer);
     }
     formatTime(mins) {
         var hours = Math.floor(mins / 60) < 10 ? '0' + Math.floor(mins / 60) : Math.floor(mins / 60);
@@ -38,7 +44,6 @@ class Running extends Component {
             timeLeft: count
         })
         setInterval(() => {
-            console.log(count);
             count -= 1;
             this.setState({
                 timeLeft: count
@@ -49,13 +54,13 @@ class Running extends Component {
         return (
             <View style={theme.container}>  
                 <Text>Oi!, Im running</Text>
-                <Text>time left {this.formatTime(this.state.timeLeft)}</Text>
+                <Text style={{fontSize: 100}}>time left {this.formatTime(this.state.timeLeft)}</Text>
                  <Button
                     style={{flex:1}}
                     iconRight={true}
                     backgroundColor='rgb(250,0,0)'
                     borderRadius={50}
-                    // onPress={ }
+                    onPress={() => this.stopRun() }
                     raised={true}
                     title='STOP'/>
             </View>
@@ -74,8 +79,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        fetchAndSendCurrentLocation: () => {
-            dispatch(fetchAndSendCurrentLocation());
+        fetchAndSendCurrentLocation: (runId) => {
+            dispatch(fetchAndSendCurrentLocation(runId));
         },
         sendCurrentLocation: (currentLocation) => {
             dispatch(sendCurrentLocation(currentLocation));
