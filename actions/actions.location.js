@@ -84,7 +84,6 @@ export function sendCurrentLocation (data) {
         }).then(response => {
             return response.json();
         }).then((responseJson) => {
-            console.log(oi);
             dispatch(sendCurrentLocationSuccess(responseJson));
             return responseJson;
         }).catch(err => {
