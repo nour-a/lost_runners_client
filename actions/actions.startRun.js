@@ -21,23 +21,30 @@ export function startRunError (error) {
     };
 }
 
-export function startRun (data) {
+export function startRun (data, userID) {
     return function (dispatch) {
         dispatch(startRunRequest());
-        fakeFetch('/', {
-            method: 'post',
-            body: data
-        }).then(response => {
-            return response.json();
-        }).then((responseJson) => {
-            dispatch(startRunSuccess(responseJson.id));
+        fetch(`https://lost-runner.herokuapp.com/api/users/1/run`, {
+            method: 'POST',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => { 
+            
+            return response.json()
+        })
+        .then((responseJson) => {
             return responseJson.id;
-        }).catch(err => {
+        })
+        .then((id) => dispatch(startRunSuccess(id)) )
+        .catch(err => {
             dispatch(startRunError(err));
             console.log('error');
         });
-        // what you return here gets returned by the dispatch function that used   
-        // this action creator
         return null; 
     };
 }
