@@ -36,8 +36,9 @@ class Message extends Component {
     start(){ 
         const {startLocation, destination, duration, contacts, message, user_id} = this.props;
         this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
+        // FIX THIS, THIS IS JUST AN UGLY SOLUTION
         if (this.props.isRunning){
-            Actions.running(), 3000; 
+            Actions.running(); 
         }
     }
     render() {

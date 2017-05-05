@@ -1,11 +1,6 @@
 import * as types from './types';
 // import {ROOT} from '../config';
 
-export function startRunRequest () { 
-     return {
-        type: types.START_RUN,
-    };
-}
 
 export function startRunSuccess (res) { 
      return {
@@ -23,7 +18,6 @@ export function startRunError (error) {
 
 export function startRun (data, userID) {
     return function (dispatch) {
-        dispatch(startRunRequest());
         fetch(`https://lost-runner.herokuapp.com/api/users/1/run`, {
             method: 'POST',
             dataType: 'json',
@@ -33,13 +27,8 @@ export function startRun (data, userID) {
             },
             body: JSON.stringify(data)
         })
-        .then(response => { 
-            
-            return response.json()
-        })
-        .then((responseJson) => {
-            return responseJson.id;
-        })
+        .then(response => { return response.json() })
+        .then((responseJson) => { return responseJson.id })
         .then((id) => dispatch(startRunSuccess(id)) )
         .catch(err => {
             dispatch(startRunError(err));
@@ -49,10 +38,40 @@ export function startRun (data, userID) {
     };
 }
 
-function fakeFetch() {
-    return new Promise(function (resolve) {
-        setTimeout(function () {
-            resolve({json: () => ({id: 12})});
-        }, 500);
-    });
+// function fakeFetch() {
+//     return new Promise(function (resolve) {
+//         setTimeout(function () {
+//             resolve({json: () => ({id: 12})});
+//         }, 500);
+//     });
+// }
+
+
+export function deleteRunSuccess (res) { 
+     return {
+        type: types.DELETE_RUN_SUCCESS,
+        payload: res
+    };
+}
+export function deleteRunError (err) { 
+     return {
+        type: types.DELETE_RUN_ERROR,
+        payload: err
+    };
+}
+
+export function deleteRun (runId) {
+    return function (dispatch) {
+        fetch(`https://lost-runner.herokuapp.com/api/runs/${runId}`, {
+            method: 'DELETE',
+        })
+        .then(response => { return response.json() })
+        .then((responseJson) => { return responseJson })
+        .then((res) => dispatch(deleteRunSuccess(res)) )
+        .catch(err => {
+            dispatch(deleteRunError(err));
+            console.log('something went wrong, could not delete the run');
+        });
+        return null; 
+    };
 }

@@ -70,10 +70,10 @@ export function sendCurrentLocationError (error) {
     };
 }
 
-export function sendCurrentLocation (data) {
+export function sendCurrentLocation (data, runId) {
     return function (dispatch) {
         dispatch(sendCurrentLocationRequest());
-        fetch(`https://lost-runner.herokuapp.com/api/runs/1/coordinates`, {
+        fetch(`https://lost-runner.herokuapp.com/api/runs/${runId}/coordinates`, {
             method: 'POST',
             dataType: 'json',
             headers: {
@@ -81,9 +81,9 @@ export function sendCurrentLocation (data) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(response => {
-            return response.json();
-        }).then((responseJson) => {
+        })
+        .then(response => {return response.json()})
+        .then((responseJson) => {
             dispatch(sendCurrentLocationSuccess(responseJson));
             return responseJson;
         }).catch(err => {
