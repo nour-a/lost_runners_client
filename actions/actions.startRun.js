@@ -18,7 +18,7 @@ export function startRunError (error) {
 
 export function startRun (data, userID) {
     return function (dispatch) {
-        fetch(`https://lost-runner.herokuapp.com/api/users/1/run`, {
+        fetch(`https://damp-meadow-34497.herokuapp.com/api/users/1/run`, {
             method: 'POST',
             dataType: 'json',
             headers: {
@@ -29,7 +29,7 @@ export function startRun (data, userID) {
         })
         .then(response => { return response.json() })
         .then((responseJson) => { return responseJson.id })
-        .then((id) => dispatch(startRunSuccess(id)) )
+        .then((id) => dispatch(startRunSuccess(id)) ) 
         .catch(err => {
             dispatch(startRunError(err));
             console.log('error');
@@ -62,7 +62,7 @@ export function deleteRunError (err) {
 
 export function deleteRun (runId) {
     return function (dispatch) {
-        fetch(`https://lost-runner.herokuapp.com/api/runs/${runId}`, {
+        fetch(`https://damp-meadow-34497.herokuapp.com/api/runs/${runId}`, {
             method: 'DELETE',
         })
         .then(response => { return response.json() })

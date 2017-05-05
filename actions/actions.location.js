@@ -73,7 +73,7 @@ export function sendCurrentLocationError (error) {
 export function sendCurrentLocation (data, runId) {
     return function (dispatch) {
         dispatch(sendCurrentLocationRequest());
-        fetch(`https://lost-runner.herokuapp.com/api/runs/${runId}/coordinates`, {
+        fetch(`https://damp-meadow-34497.herokuapp.com/api/runs/${runId}/coordinates`, {
             method: 'POST',
             dataType: 'json',
             headers: {

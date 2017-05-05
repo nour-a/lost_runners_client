@@ -51,8 +51,7 @@ class Running extends Component {
         return (
             <View style={theme.container}>  
                 <Text>Oi!, Im running</Text>
-                {/*<Text style={{fontSize: 100}}>{this.formatTime(this.state.timeLeft)}</Text>*/}
-                <Text style={{fontSize: 100}}>{this.state.timeLeft}</Text>
+                <Text style={{fontSize: 100}}>{this.formatTime(this.state.timeLeft)}</Text>
                  <Button
                     style={{flex:1}}
                     iconRight={true}
@@ -70,7 +69,6 @@ Running.propTypes = {
      duration:PropTypes.number,
      fetchAndSendCurrentLocation: PropTypes.func,
      sendCurrentLocation: PropTypes.func,
-     // toogleRun: PropTypes.func,
 };
 function mapStateToProps(state) {
     return {
@@ -83,9 +81,9 @@ function mapDispatchToProps(dispatch) {
         fetchAndSendCurrentLocation: (runId) => {
             dispatch(fetchAndSendCurrentLocation(runId));
         },
-        // sendCurrentLocation: (currentLocation, runId) => {
-        //     dispatch(sendCurrentLocation(currentLocation, runId));
-        // },
+        sendCurrentLocation: (currentLocation, runId) => {
+            dispatch(sendCurrentLocation(currentLocation, runId));
+        },
         deleteRun: (runId) => {
             dispatch(deleteRun(runId));
         }
