@@ -34,8 +34,15 @@ class Message extends Component {
         this.setState({message});
     }
     start(){ 
-        const {startLocation, destination, duration, contacts, message, user_id} = this.props;
-        this.props.startRun(startLocation, destination, duration, contacts, message, user_id);
+        const appState = {
+            startLocation: this.props.startLocation, 
+            destination: this.props.destination, 
+            duration: this.props.duration, 
+            contacts: this.props.contacts, 
+            message: this.props.message, 
+            user_id: this.props.user_id
+        }
+        this.props.startRun(appState);
         // FIX THIS, THIS IS JUST AN UGLY SOLUTION
         if (this.props.isRunning){
             Actions.running(); 
@@ -99,14 +106,8 @@ function mapDispatchToProps(dispatch) {
         setMessage: (message) => {
             dispatch(setMessage(message));
         },
-        startRun: (startLocation,destination,duration,contacts,message,user_id) => {
-            dispatch(startRun({
-                startLocation: startLocation,
-                destination: destination,
-                duration: duration,
-                contacts: contacts,
-                message: message,
-            }, user_id));
+        startRun: (data) => {
+            dispatch(startRun(data));
         }
     };
 }

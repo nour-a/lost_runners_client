@@ -16,7 +16,7 @@ export function startRunError (error) {
     };
 }
 
-export function startRun (data, userID) {
+export function startRun (data) {
     return function (dispatch) {
         fetch(`https://damp-meadow-34497.herokuapp.com/api/users/1/run`, {
             method: 'POST',
